@@ -7,3 +7,5 @@ The native CLI respects the configured CDP endpoint and uses JSON output. Unlike
 The error-handling sweep checked the CLI router/commands, scripts, and test runners for caught connection errors reported with a success exit. The redundant local verification runner was the confirmed occurrence; it is not imported. Existing `pine check` reports valid compiler diagnostic results with exit 0 by design and is outside this connection-check contract. The original runner remains in its source checkout for preservation, so these guarantees apply to the documented native command.
 
 The staged `AGENTS.md` is already present unchanged on the user's fork. No agent rules are modified. Publication target is `leoguu67/tradingview-mcp`, not the upstream repository.
+
+The fork did not report a workflow run for the initial pull-request event despite enabled Actions and an active CI workflow. CI also runs on pushes to `codex/**` branches so integration branches receive the existing Node 20/22 lint-and-unit checks directly. No repository Actions policy is changed.
