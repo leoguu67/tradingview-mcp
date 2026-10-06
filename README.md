@@ -136,6 +136,18 @@ Replace `/path/to/tradingview-mcp` with your actual path.
 
 Ask Claude: *"Use tv_health_check to verify TradingView is connected"*
 
+Or check the same connection through the existing CLI (JSON output):
+```bash
+npm run tv -- status
+# Optional: match the CDP host/port configured for your Desktop instance
+TV_CDP_HOST=127.0.0.1 TV_CDP_PORT=9333 npm run tv -- status
+```
+A successful status command exits with code 0. Connection failures print an error
+JSON to stderr and exit with code 2; other thrown errors exit with code 1.
+`TV_CDP_HOST` / `TV_CDP_PORT` take precedence over `CDP_HOST` / `CDP_PORT`;
+the defaults are `127.0.0.1:9222`. No separate verification script is needed.
+
+
 ## CLI
 
 Every MCP tool is also accessible as a `tv` CLI command. All output is JSON for piping with `jq`.
