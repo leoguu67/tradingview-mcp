@@ -1,5 +1,6 @@
 import { it } from 'node:test';
 import assert from 'node:assert/strict';
+import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 
 // Replace the external health operation, retaining real CLI registration/router.
@@ -21,7 +22,7 @@ function status(failure = '') {
   return spawnSync(process.execPath, [
     '--no-warnings', '--experimental-loader',
     `data:text/javascript,${encodeURIComponent(loader)}`,
-    new URL('../src/cli/index.js', import.meta.url).pathname, 'status',
+    fileURLToPath(new URL('../src/cli/index.js', import.meta.url)), 'status',
   ], { encoding: 'utf8', timeout: 15000, env: {
     ...process.env, STATUS_TEST_FAILURE: failure,
     TV_CDP_HOST: '127.0.0.1', TV_CDP_PORT: '9333',
